@@ -26,11 +26,17 @@ return [
     'modules' => [
         'admin' => [
             'class' => 'mdm\admin\Module',
+            'mainLayout' => '@mdm/admin/views/layouts/main.php',
+            'layout' => '@mdm/admin/views/layouts/top-menu.php',
         ]
     ],
     'components' => [
         'authManager' => [
-            'class' => 'yii\rbac\PhpManager', // 或者使用  'yii\rbac\DbManager'
+            //'class' => 'yii\rbac\PhpManager',
+            'class' => 'yii\rbac\DbManager',
+//            "defaultRoles" => [
+//                "guest",
+//            ],
         ],
 
         'request' => [
