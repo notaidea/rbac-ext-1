@@ -14,9 +14,10 @@ return [
     'as access' => [
         'class' => 'mdm\admin\components\AccessControl',
         'allowActions' => [
-            'site/*',
-            'admin/*',
-            'some-controller/some-action',
+            'site/index',
+            'site/login',
+            'site/logout',
+            //'admin/*',
             //此处的action列表，允许任何人（包括游客）访问
             //所以如果是正式环境（线上环境），不应该在这里配置任何东西，为空即可
             //但是为了在开发环境更简单的使用，可以在此处配置你所需要的任何权限

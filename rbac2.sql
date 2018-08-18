@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50553
 File Encoding         : 65001
 
-Date: 2018-08-17 00:04:35
+Date: 2018-08-18 21:46:53
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -31,6 +31,7 @@ CREATE TABLE `auth_assignment` (
 -- Records of auth_assignment
 -- ----------------------------
 INSERT INTO `auth_assignment` VALUES ('经理', '2', '1534432461');
+INSERT INTO `auth_assignment` VALUES ('超级管理员', '1', '1534498519');
 
 -- ----------------------------
 -- Table structure for auth_item
@@ -53,7 +54,6 @@ CREATE TABLE `auth_item` (
 -- ----------------------------
 -- Records of auth_item
 -- ----------------------------
-INSERT INTO `auth_item` VALUES ('/*', '2', null, null, null, '1534432530', '1534432530');
 INSERT INTO `auth_item` VALUES ('/admin/*', '2', null, null, null, '1534432530', '1534432530');
 INSERT INTO `auth_item` VALUES ('/admin/assignment/*', '2', null, null, null, '1534432530', '1534432530');
 INSERT INTO `auth_item` VALUES ('/admin/assignment/assign', '2', null, null, null, '1534432530', '1534432530');
@@ -127,7 +127,13 @@ INSERT INTO `auth_item` VALUES ('/site/error', '2', null, null, null, '153443253
 INSERT INTO `auth_item` VALUES ('/site/index', '2', null, null, null, '1534432530', '1534432530');
 INSERT INTO `auth_item` VALUES ('/site/login', '2', null, null, null, '1534432530', '1534432530');
 INSERT INTO `auth_item` VALUES ('/site/logout', '2', null, null, null, '1534432530', '1534432530');
+INSERT INTO `auth_item` VALUES ('/site/test', '2', null, null, null, '1534519831', '1534519831');
+INSERT INTO `auth_item` VALUES ('/site/time', '2', null, 'test', null, '1534521843', '1534521843');
+INSERT INTO `auth_item` VALUES ('permission-1', '2', null, null, null, '1534482466', '1534482466');
+INSERT INTO `auth_item` VALUES ('time', '2', null, 'test', null, '1534521940', '1534521940');
 INSERT INTO `auth_item` VALUES ('经理', '1', '部门经理', null, null, '1534432012', '1534432012');
+INSERT INTO `auth_item` VALUES ('超级管理员', '1', '超级管理员', null, null, '1534498350', '1534498350');
+INSERT INTO `auth_item` VALUES ('运营', '1', '运营人员', null, null, '1534482168', '1534482168');
 
 -- ----------------------------
 -- Table structure for auth_item_child
@@ -145,13 +151,96 @@ CREATE TABLE `auth_item_child` (
 -- ----------------------------
 -- Records of auth_item_child
 -- ----------------------------
+INSERT INTO `auth_item_child` VALUES ('超级管理员', '/admin/*');
+INSERT INTO `auth_item_child` VALUES ('超级管理员', '/admin/assignment/*');
+INSERT INTO `auth_item_child` VALUES ('超级管理员', '/admin/assignment/assign');
+INSERT INTO `auth_item_child` VALUES ('超级管理员', '/admin/assignment/index');
+INSERT INTO `auth_item_child` VALUES ('超级管理员', '/admin/assignment/revoke');
+INSERT INTO `auth_item_child` VALUES ('超级管理员', '/admin/assignment/view');
+INSERT INTO `auth_item_child` VALUES ('超级管理员', '/admin/default/*');
+INSERT INTO `auth_item_child` VALUES ('超级管理员', '/admin/default/index');
+INSERT INTO `auth_item_child` VALUES ('超级管理员', '/admin/menu/*');
+INSERT INTO `auth_item_child` VALUES ('超级管理员', '/admin/menu/create');
+INSERT INTO `auth_item_child` VALUES ('超级管理员', '/admin/menu/delete');
+INSERT INTO `auth_item_child` VALUES ('超级管理员', '/admin/menu/index');
+INSERT INTO `auth_item_child` VALUES ('超级管理员', '/admin/menu/update');
+INSERT INTO `auth_item_child` VALUES ('超级管理员', '/admin/menu/view');
+INSERT INTO `auth_item_child` VALUES ('超级管理员', '/admin/permission/*');
+INSERT INTO `auth_item_child` VALUES ('超级管理员', '/admin/permission/assign');
+INSERT INTO `auth_item_child` VALUES ('超级管理员', '/admin/permission/create');
+INSERT INTO `auth_item_child` VALUES ('超级管理员', '/admin/permission/delete');
+INSERT INTO `auth_item_child` VALUES ('超级管理员', '/admin/permission/index');
+INSERT INTO `auth_item_child` VALUES ('超级管理员', '/admin/permission/remove');
+INSERT INTO `auth_item_child` VALUES ('超级管理员', '/admin/permission/update');
+INSERT INTO `auth_item_child` VALUES ('超级管理员', '/admin/permission/view');
+INSERT INTO `auth_item_child` VALUES ('超级管理员', '/admin/role/*');
+INSERT INTO `auth_item_child` VALUES ('超级管理员', '/admin/role/assign');
+INSERT INTO `auth_item_child` VALUES ('超级管理员', '/admin/role/create');
+INSERT INTO `auth_item_child` VALUES ('超级管理员', '/admin/role/delete');
+INSERT INTO `auth_item_child` VALUES ('超级管理员', '/admin/role/index');
+INSERT INTO `auth_item_child` VALUES ('超级管理员', '/admin/role/remove');
+INSERT INTO `auth_item_child` VALUES ('超级管理员', '/admin/role/update');
+INSERT INTO `auth_item_child` VALUES ('超级管理员', '/admin/role/view');
+INSERT INTO `auth_item_child` VALUES ('超级管理员', '/admin/route/*');
+INSERT INTO `auth_item_child` VALUES ('超级管理员', '/admin/route/assign');
+INSERT INTO `auth_item_child` VALUES ('超级管理员', '/admin/route/create');
+INSERT INTO `auth_item_child` VALUES ('超级管理员', '/admin/route/index');
+INSERT INTO `auth_item_child` VALUES ('超级管理员', '/admin/route/refresh');
+INSERT INTO `auth_item_child` VALUES ('超级管理员', '/admin/route/remove');
+INSERT INTO `auth_item_child` VALUES ('超级管理员', '/admin/rule/*');
+INSERT INTO `auth_item_child` VALUES ('超级管理员', '/admin/rule/create');
+INSERT INTO `auth_item_child` VALUES ('超级管理员', '/admin/rule/delete');
+INSERT INTO `auth_item_child` VALUES ('超级管理员', '/admin/rule/index');
+INSERT INTO `auth_item_child` VALUES ('超级管理员', '/admin/rule/update');
+INSERT INTO `auth_item_child` VALUES ('超级管理员', '/admin/rule/view');
+INSERT INTO `auth_item_child` VALUES ('超级管理员', '/admin/user/*');
+INSERT INTO `auth_item_child` VALUES ('超级管理员', '/admin/user/activate');
+INSERT INTO `auth_item_child` VALUES ('超级管理员', '/admin/user/change-password');
+INSERT INTO `auth_item_child` VALUES ('超级管理员', '/admin/user/delete');
+INSERT INTO `auth_item_child` VALUES ('超级管理员', '/admin/user/index');
+INSERT INTO `auth_item_child` VALUES ('超级管理员', '/admin/user/login');
+INSERT INTO `auth_item_child` VALUES ('超级管理员', '/admin/user/logout');
+INSERT INTO `auth_item_child` VALUES ('超级管理员', '/admin/user/request-password-reset');
+INSERT INTO `auth_item_child` VALUES ('超级管理员', '/admin/user/reset-password');
+INSERT INTO `auth_item_child` VALUES ('超级管理员', '/admin/user/signup');
+INSERT INTO `auth_item_child` VALUES ('超级管理员', '/admin/user/view');
+INSERT INTO `auth_item_child` VALUES ('超级管理员', '/debug/*');
+INSERT INTO `auth_item_child` VALUES ('超级管理员', '/debug/default/*');
+INSERT INTO `auth_item_child` VALUES ('超级管理员', '/debug/default/db-explain');
+INSERT INTO `auth_item_child` VALUES ('超级管理员', '/debug/default/download-mail');
+INSERT INTO `auth_item_child` VALUES ('超级管理员', '/debug/default/index');
+INSERT INTO `auth_item_child` VALUES ('超级管理员', '/debug/default/toolbar');
+INSERT INTO `auth_item_child` VALUES ('超级管理员', '/debug/default/view');
 INSERT INTO `auth_item_child` VALUES ('经理', '/gii/*');
+INSERT INTO `auth_item_child` VALUES ('超级管理员', '/gii/*');
 INSERT INTO `auth_item_child` VALUES ('经理', '/gii/default/*');
+INSERT INTO `auth_item_child` VALUES ('超级管理员', '/gii/default/*');
 INSERT INTO `auth_item_child` VALUES ('经理', '/gii/default/action');
+INSERT INTO `auth_item_child` VALUES ('超级管理员', '/gii/default/action');
 INSERT INTO `auth_item_child` VALUES ('经理', '/gii/default/diff');
+INSERT INTO `auth_item_child` VALUES ('超级管理员', '/gii/default/diff');
 INSERT INTO `auth_item_child` VALUES ('经理', '/gii/default/index');
+INSERT INTO `auth_item_child` VALUES ('超级管理员', '/gii/default/index');
 INSERT INTO `auth_item_child` VALUES ('经理', '/gii/default/preview');
+INSERT INTO `auth_item_child` VALUES ('超级管理员', '/gii/default/preview');
 INSERT INTO `auth_item_child` VALUES ('经理', '/gii/default/view');
+INSERT INTO `auth_item_child` VALUES ('超级管理员', '/gii/default/view');
+INSERT INTO `auth_item_child` VALUES ('经理', '/site/*');
+INSERT INTO `auth_item_child` VALUES ('超级管理员', '/site/*');
+INSERT INTO `auth_item_child` VALUES ('超级管理员', '/site/aaaaaaaaaaaaaaaa');
+INSERT INTO `auth_item_child` VALUES ('运营', '/site/aaaaaaaaaaaaaaaa');
+INSERT INTO `auth_item_child` VALUES ('超级管理员', '/site/error');
+INSERT INTO `auth_item_child` VALUES ('超级管理员', '/site/index');
+INSERT INTO `auth_item_child` VALUES ('超级管理员', '/site/login');
+INSERT INTO `auth_item_child` VALUES ('permission-1', '/site/logout');
+INSERT INTO `auth_item_child` VALUES ('超级管理员', '/site/logout');
+INSERT INTO `auth_item_child` VALUES ('超级管理员', '/site/test');
+INSERT INTO `auth_item_child` VALUES ('time', '/site/time');
+INSERT INTO `auth_item_child` VALUES ('经理', '/site/time');
+INSERT INTO `auth_item_child` VALUES ('超级管理员', '/site/time');
+INSERT INTO `auth_item_child` VALUES ('超级管理员', 'permission-1');
+INSERT INTO `auth_item_child` VALUES ('经理', 'time');
+INSERT INTO `auth_item_child` VALUES ('超级管理员', 'time');
 
 -- ----------------------------
 -- Table structure for auth_rule
@@ -168,7 +257,7 @@ CREATE TABLE `auth_rule` (
 -- ----------------------------
 -- Records of auth_rule
 -- ----------------------------
-INSERT INTO `auth_rule` VALUES ('aaa', 'O:30:\"mdm\\admin\\components\\GuestRule\":3:{s:4:\"name\";s:3:\"aaa\";s:9:\"createdAt\";i:1534435235;s:9:\"updatedAt\";i:1534435235;}', '1534435235', '1534435235');
+INSERT INTO `auth_rule` VALUES ('test', 'O:21:\"common\\rules\\TestRule\":3:{s:4:\"name\";s:4:\"test\";s:9:\"createdAt\";i:1534519777;s:9:\"updatedAt\";i:1534524443;}', '1534519777', '1534524443');
 
 -- ----------------------------
 -- Table structure for menu

@@ -210,14 +210,22 @@ abstract class BaseManager extends Component implements ManagerInterface
      */
     protected function executeRule($user, $item, $params)
     {
+        \Yii::error("checking-ruleName-start");
         if ($item->ruleName === null) {
+            //var_dump($item);die;
             return true;
         }
+
         $rule = $this->getRule($item->ruleName);
+        \Yii::error("checking-ruleName-end");
+        \Yii::error($rule);
         if ($rule instanceof Rule) {
+            \Yii::error("qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq");
             return $rule->execute($user, $item, $params);
         } else {
             throw new InvalidConfigException("Rule not found: {$item->ruleName}");
         }
+
+        return false;
     }
 }

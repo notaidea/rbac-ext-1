@@ -705,12 +705,14 @@ class User extends Component
      */
     public function can($permissionName, $params = [], $allowCaching = true)
     {
+Yii::trace("===========================================User-can--$permissionName");
         if ($allowCaching && empty($params) && isset($this->_access[$permissionName])) {
             return $this->_access[$permissionName];
         }
         if (($accessChecker = $this->getAccessChecker()) === null) {
             return false;
         }
+
         $access = $accessChecker->checkAccess($this->getId(), $permissionName, $params);
         if ($allowCaching && empty($params)) {
             $this->_access[$permissionName] = $access;

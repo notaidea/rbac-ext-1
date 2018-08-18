@@ -118,6 +118,7 @@ class DbManager extends BaseManager
      */
     public function checkAccess($userId, $permissionName, $params = [])
     {
+Yii::trace("===========================================DbManager-checkAccess");
         $assignments = $this->getAssignments($userId);
         $this->loadFromCache();
         if ($this->items !== null) {
@@ -183,10 +184,11 @@ class DbManager extends BaseManager
      */
     protected function checkAccessRecursive($user, $itemName, $params, $assignments)
     {
+        //判断有没相关权限
         if (($item = $this->getItem($itemName)) === null) {
             return false;
         }
-
+Yii::trace("===========================================DbManager-checkAccessRecursive");
         Yii::trace($item instanceof Role ? "Checking role: $itemName" : "Checking permission: $itemName", __METHOD__);
 
         if (!$this->executeRule($user, $item, $params)) {
@@ -202,6 +204,7 @@ class DbManager extends BaseManager
             ->from($this->itemChildTable)
             ->where(['child' => $itemName])
             ->column($this->db);
+
         foreach ($parents as $parent) {
             if ($this->checkAccessRecursive($user, $parent, $params, $assignments)) {
                 return true;
